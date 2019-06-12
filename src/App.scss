@@ -1,0 +1,92 @@
+body {
+  // background: black;
+  color: white;
+  background: #C02425;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #F0CB35, #C02425);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #F0CB35, #C02425); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+#container {
+  width: 40vw;
+  max-width: 760px;
+  height: 40vw;
+  background: #F0CB35;
+  margin: auto;
+  margin-top: 10vh;
+}
+
+#num-container {
+  height: 85%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+#result {
+  width: 100%;
+  background: rgba(0, 0, 0, .4);
+  height: 15%;
+  display: flex;
+}
+
+#result p {
+  font-size: 40px;
+  margin:auto 0 auto auto;
+  vertical-align: middle;
+}
+
+.button {
+  width: 100%;
+  /* padding: 10px; */
+  display: flex;
+  /* display: inline; */
+  z-index: 100;
+}
+
+.button-inner {
+  border-radius: 50%;
+  font-size: 50px;
+  display: flex;
+  vertical-align: middle;
+  text-align: center;
+  // background: #C02425;  /* fallback for old browsers */
+  // background: -webkit-linear-gradient(to right, #F0CB35, #C02425);  /* Chrome 10-25, Safari 5.1-6 */
+  // background: linear-gradient(to right, #F0CB35, #C02425); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: rgb(189, 151, 0);
+  height: 90%;
+  width: 90%;
+  vertical-align: middle;
+  /* margin:10px; */
+  margin:auto;
+
+}
+
+.button-inner p {
+  margin: auto;
+  vertical-align: middle;
+}
+//so the text of the buttons dont highlight
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+@media (min-width: 320px) and (max-width: 1200px) {
+  
+
+  #container {
+    width: 100vw;
+    height: 100vw;
+  }
+
+  .button-inner {
+    font-size: 40px;
+  }
+  
+}

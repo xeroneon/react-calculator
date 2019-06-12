@@ -1,24 +1,15 @@
 import React, { useState } from 'react';
-import './App.css';
+import './App.scss';
 import Result from './components/Result'
 import Button from "./components/Button"
 
 function App() {
   const [result, setResult] = useState('');
   const numbers = ["1", "2", "3", '/', "Del", "4", "5", "6", '*', "C", "7", "8", "9", '-', '', "0", '.', '=', '+'];
+  const numbersCheck = ["1", "2", "3", '/', "Del", "4", "5", "6", '*', "C", "7", "8", "9", '-', '', "0", '.', '=', '+', 'Del', 'Enter', 'Backspace'];
 
   const handleButton = e => {
-    console.log(e.target.number)
-    if (e.target.textContent === '=') {
-      return setResult(eval(result));
-    }
-    if (e.target.textContent === 'C') {
-      return setResult('')
-    }
-    if (e.target.textContent === "Del") {
-      return setResult(result.slice(0, -1));
-    }
-    setResult(result + e.target.textContent)
+    handleResult(e.target.textContent);
   }
 
   const handleClear = () => {
@@ -26,17 +17,40 @@ function App() {
   }
 
   document.onkeyup = (e) => {
-    console.log(e.key);
-    if (e.key === "Backspace") {
-      return setResult(result.slice(0, -1));
-    }
-    if (e.key === "Enter") {
-      return setResult(eval(result));
-    }
-    if (numbers.indexOf(e.key) === -1) {
+    handleResult(e.key)
+  }
+
+  const handleResult = input => {
+
+    if (numbersCheck.indexOf(input) === -1) {
       return;
     }
-    setResult(result + e.key);
+
+    switch (input) {
+      case '=':
+      case 'Enter':
+        let number = eval(result);
+        return setResult(number.toString());
+        break;
+      case 'C':
+        return setResult('');
+        break;
+      case 'Del':
+      case 'Backspace':
+        return setResult(result.slice(0, -1));
+      case '/':
+      case '*':
+      case '-':
+      case '+':
+      case '.':
+        if (result.endsWith('/') || result.endsWith('*') || result.endsWith('-') || result.endsWith('+') || result.endsWith('.') ){
+          return
+        } else if(result === '') {
+          return
+        }
+      default:
+        setResult(result + input)
+    }
   }
 
   // const evaluate = () => {
@@ -46,6 +60,7 @@ function App() {
 
   return (
     <>
+    {/* <div class="sixteen-nine"> */}
       <div id="container">
         <Result text={result} handleClear={handleClear} />
         <div id="num-container">
@@ -57,6 +72,7 @@ function App() {
           })}
         </div>
       </div>
+      {/* </div> */}
     </>
   );
 }
